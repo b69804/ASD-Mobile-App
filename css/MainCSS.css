@@ -2,11 +2,16 @@
 ASD 1309 Mobile App Project */
 
 .center-wrapper{
+    padding-top: 2px;
     text-align: center;
 }
 
 .center-wrapper{
     margin: 0 auto;
+}
+
+section.header{
+   padding-top: 10px; 
 }
 
 #required1{font-size: 12px; color: #ff0000;}
