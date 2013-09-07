@@ -1,3 +1,17 @@
 /* Matthew Ashton
 ASD 1309 Mobile App Project */
 
+.center-wrapper{
+    padding-top: 2px;
+    text-align: center;
+}
+
+.center-wrapper{
+    margin: 0 auto;
+}
+
+
+#required1{font-size: 12px; color: #ff0000;}
+#required2{font-size: 12px; color: #ff0000;}
+#required3{font-size: 12px; color: #ff0000;}
+#required4{font-size: 12px; color: #ff0000;}
