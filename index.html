@@ -159,6 +159,7 @@ ASD 1309 Mobile App Project-->
             <form action="" method="post" id="gameEntry">
                 <ul data-role="listview" data-inset="true">
                     <li data-role="list-divider" style="font-size: 12pt; color: #000000">Add Game Information</li>
+                    <input id="key" type="hidden" value="" />
                     <li data-role="fieldcontain">
                         <label for="opponet">Opponet:<label id="required1">  (Required)  </label></label>
                         <input type="text" name="opponet" id="opponet" placeholder="Example: Arsenal" class="required"/>  
@@ -168,13 +169,11 @@ ASD 1309 Mobile App Project-->
                         <input type="date" name="dateOfGame" id="dateOfGame" placeholder="MM/DD/YYYY" class="required date"/>
                     </li>
                     <li data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <legend>Is MUFC Home or Away?<label id="required3"> (Required)</label></legend>
-                            <input type="radio" value="Yes" name="homeAway" id="home"/>
-                            <label for="home">Home</label>
-                            <input type="radio" value="No" name="homeAway" id="away"/>
-                            <label for="away">Away</label>
-                        </fieldset>
+                        <label for="homeAway">Is MUFC Home or Away<label id="required3"> (Required)</label></label>
+                        <select name="homeAway" id="homeAway" data-role="slider">
+                            <option value="home">Home</option>
+                            <option value="away">Away</option>
+                        </select>
                     </li>
                     <li data-role="fieldcontain">
                         <label for="competition" class="select">Select Competition:</label>
@@ -189,13 +188,11 @@ ASD 1309 Mobile App Project-->
                         </select>
                     </li>
                     <li data-role="fieldcontain">
-                        <fieldset data-role="controlgroup">
-                            <legend>Is This a Must Watch Game?<label id="required4"> (Required)</label></legend>
-                            <input type="radio" value="Yes" name="mustWatchGame" id="yes"/>
-                            <label for="yes">Yes</label>
-                            <input type="radio" value="No" name="mustWatchGame" id="no"/>
-                            <label for="no">No</label>
-                        </fieldset>
+                        <label for="mustWatch">Is This a Must Watch Game?<label id="required4"> (Required)</label></label>
+                        <select name="mustWatch" id="mustWatch" data-role="slider">
+                            <option value="no">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
                     </li>
                     <li data-role="fieldcontain">
                         <label for="prediction">Prediction:</label>
