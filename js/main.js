@@ -53,7 +53,7 @@ var storeData = function(key){
             
         localStorage.setItem(ID, JSON.stringify(item));
         alert("Game Saved!");
-	reloadPage:true
+	location.reload();  
     };
 });
 
@@ -70,15 +70,14 @@ $("#browseGames").on("pageinit", function(){
                 "<p>"+item.homeAway[1]+"</p>" +
                 "<p>"+item.competition[1]+"</p>" +
 		"<p>"+item.mustWatch[1]+"</p>" +
-		"<p>"+item.prediction[1]+"</p>");
-            var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
-            makeLink.on('click', function(){
-                console.log("This is my key: "+this.id);
-            });
-            makeLink.html(makeSubLi);
-            makeSubList.append(makeLink).appendTo("#gameList");
+		"<p>"+item.prediction[1]+"</p>")
+		.appendTo("#gameList");
+            //var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
+            //makeLink.on('click', function(){});
+            //makeLink.html(makeSubLi);
+            //makeSubList.append(makeLink).appendTo("#gameList");
         }; 
-        $("gameList").listview('refresh');
-    });
-        
+        $("gameList").listview('reload');
+	//location.reload();
+    });    
 });
