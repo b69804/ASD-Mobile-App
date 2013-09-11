@@ -56,11 +56,12 @@ ASD 1309 Mobile App Project-->
             <section class="center-wrapper"><img src="images/watchMUFC.png" width="100px" height="35px"></section>
         </section>
         <section data-role="content">
-            <ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Search Games...">
+            <a href="#" data-role="button" id="localStorage" data-theme="a">Load LocalStorage</a>
+            <a href="#" data-role="button" id="loadJSON" data-theme="a">Load JSON Data</a>
+            <a href="#" data-role="button" id="loadXML" data-theme="a">Load XML Data</a>
+            <ul data-role="listview" data-inset="true" id="gameList" data-filter="true" data-filter-placeholder="Search Games...">
                 <li data-role="list-divider" style="font-size: 12pt; color: #000000">Browse All Games</li>
                 <li>
-                    <h3>No games added yet!</h3>
-                    <p>Click Add Game to add a game to your list</p>
                 </li>
             </ul>
         </section>
@@ -171,26 +172,26 @@ ASD 1309 Mobile App Project-->
                     <li data-role="fieldcontain">
                         <label for="homeAway">Is MUFC Home or Away<label id="required3"> (Required)</label></label>
                         <select name="homeAway" id="homeAway" data-role="slider">
-                            <option value="home">Home</option>
-                            <option value="away">Away</option>
+                            <option value="Home">Home</option>
+                            <option value="Away">Away</option>
                         </select>
                     </li>
                     <li data-role="fieldcontain">
                         <label for="competition" class="select">Select Competition:</label>
                             <select name="competition" id="competition" data-native-menu="true">
-                                <option value="premLeague">Premier League</option>
-                                <option value="faCup">FA Cup</option>
-                                <option value="champLeague">Champions League</option>
-                                <option value="capOneCup">Capital One Cup</option>
-                                <option value="eurLeague">Europa League</option>
-                                <option value="friendly">Friendly</option>
-                                <option value="other">Other</option>
+                                <option value="Premier League">Premier League</option>
+                                <option value="FA Cup">FA Cup</option>
+                                <option value="Champions League">Champions League</option>
+                                <option value="Capital One Cup">Capital One Cup</option>
+                                <option value="Europa League">Europa League</option>
+                                <option value="Friendly">Friendly</option>
+                                <option value="Other">Other</option>
                         </select>
                     </li>
                     <li data-role="fieldcontain">
                         <label for="mustWatch">Is This a Must Watch Game?<label id="required4"> (Required)</label></label>
                         <select name="mustWatch" id="mustWatch" data-role="slider">
-                            <option value="no">No</option>
+                            <option value="No">No</option>
                             <option value="Yes">Yes</option>
                         </select>
                     </li>
@@ -205,6 +206,10 @@ ASD 1309 Mobile App Project-->
                         <input type="reset" value="Start Over" data-mini="true" data-icon="delete" data-iconpos="left" data-theme="b"/>
                     </li>
                 </ul>
+                <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
+                    <a href="#browseGames" data-role="button" id="editGames" data-theme="a">Edit Games</a>
+                    <a href="#" data-role="button" data-theme="a">Clear All Games</a>
+                </div>
             </form>
         </section>
         <section data-role="footer" data-id="titlePage">

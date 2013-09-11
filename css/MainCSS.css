@@ -10,6 +10,7 @@ ASD 1309 Mobile App Project */
     margin: 0 auto;
 }
 
+#editClear{text-align: center;}
 
 #required1{font-size: 12px; color: #ff0000;}
 #required2{font-size: 12px; color: #ff0000;}

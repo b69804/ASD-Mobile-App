@@ -1,9 +1,7 @@
 // Matthew Ashton
 // ASD 1309 Mobile App Project
 
-$(document).bind('pageinit',function(){
-                
-});
+$('#JQMpageID').on('pageinit',function(){});
 
 $("#addGame").on("pageinit", function(){
     
@@ -17,6 +15,7 @@ $("#addGame").on("pageinit", function(){
                 submitHandler: function() {
                         var data = myForm.serializeArray();
 			storeData(data);
+			reloadPage:true
                 }
     });
 
@@ -54,7 +53,33 @@ var storeData = function(key){
             
         localStorage.setItem(ID, JSON.stringify(item));
         alert("Game Saved!");
+	reloadPage:true
     };
-    
+});
 
+$("#browseGames").on("pageinit", function(){
+    
+    $("#localStorage").on('click', function(){
+        $("#gameList").empty();
+        for (var i= 0, j=localStorage.length; i<j ; i++){
+            var key = localStorage.key(i);
+            var item = JSON.parse(localStorage.getItem(key));
+            console.log(item);
+            var makeSubList = $("<li></li>");
+            var makeSubLi = $( "<h3>"+item.opponet[1]+"</h3>"+
+                "<p><strong>"+item.dateOfGame[1]+"</strong></p>"+
+                "<p>"+item.homeAway[1]+"</p>" +
+                "<p>"+item.competition[1]+"</p>" +
+		"<p>"+item.mustWatch[1]+"</p>" +
+		"<p>"+item.prediction[1]+"</p>");
+            var makeLink = $("<a href='#' id='"+key+"'>Edit</a>");
+            makeLink.on('click', function(){
+                console.log("This is my key: "+this.id);
+            });
+            makeLink.html(makeSubLi);
+            makeSubList.append(makeLink).appendTo("#gameList");
+        }; // end for loop
+        $("ul").listview('refresh');
+    });
+        
 });
