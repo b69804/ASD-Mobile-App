@@ -15,7 +15,7 @@ $("#addGame").on("pageinit", function(){
                 submitHandler: function() {
                         var data = myForm.serializeArray();
 			storeData(data);
-			reloadPage:true
+			
                 }
     });
 
@@ -64,7 +64,6 @@ $("#browseGames").on("pageinit", function(){
         for (var i= 0, j=localStorage.length; i<j ; i++){
             var key = localStorage.key(i);
             var item = JSON.parse(localStorage.getItem(key));
-            console.log(item);
             var makeSubList = $("<li></li>");
             var makeSubLi = $( "<h3>"+item.opponet[1]+"</h3>"+
                 "<p><strong>"+item.dateOfGame[1]+"</strong></p>"+
@@ -78,8 +77,8 @@ $("#browseGames").on("pageinit", function(){
             });
             makeLink.html(makeSubLi);
             makeSubList.append(makeLink).appendTo("#gameList");
-        }; // end for loop
-        $("ul").listview('refresh');
+        }; 
+        $("gameList").listview('refresh');
     });
         
 });
