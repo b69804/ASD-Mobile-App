@@ -77,7 +77,7 @@ $("#browseGames").on("pageinit", function(){
             //makeLink.html(makeSubLi);
             //makeSubList.append(makeLink).appendTo("#gameList");
         }; 
-        $("gameList").listview('reload');
-	//location.reload();
+        //$("gameList").listview('refresh');
+	location.reload();
     });    
 });
