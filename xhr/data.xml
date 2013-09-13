@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item>
+        <opponet>Shakhtar Donetsk</opponet>
+        <dateOfGame>10-02-2013</dateOfGame>
+        <homeAway>Away</homeAway>
+        <competition>Champions League</competition>
+        <mustWatch>Yes</mustWatch>
+        <prediction>United draw 2-2</prediction>
+    </item>
+    <item>
+        <opponet>Sunderland</opponet>
+        <dateOfGame>10-05-2013</dateOfGame>
+        <homeAway>Away</homeAway>
+        <competition>Premier League</competition>
+        <mustWatch>Yes</mustWatch>
+        <prediction>United win 2-0</prediction>
+    </item>
+    <item>
+        <opponet>Southampton</opponet>
+        <dateOfGame>10-19-2013</dateOfGame>
+        <homeAway>Home</homeAway>
+        <competition>Premier League</competition>
+        <mustWatch>Yes</mustWatch>
+        <prediction>United win 4-2</prediction>
+    </item>
+    <item>
+        <opponet>Real Sociedad</opponet>
+        <dateOfGame>10-23-2013</dateOfGame>
+        <homeAway>Home</homeAway>
+        <competition>Champions League</competition>
+        <mustWatch>Yes</mustWatch>
+        <prediction>United win 2-1</prediction>
+    </item>
+    <item>
+        <opponet>Stoke City</opponet>
+        <dateOfGame>10-26-2013</dateOfGame>
+        <homeAway>Home</homeAway>
+        <competition>Premier League</competition>
+        <mustWatch>No</mustWatch>
+        <prediction>United win 4-0</prediction>
+    </item>
+</items>
