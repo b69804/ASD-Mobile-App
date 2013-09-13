@@ -16,7 +16,7 @@ ASD 1309 Mobile App Project-->
     
     <title>Track MUFC Games Here!</title>
     
-    <link rel="stylesheet" href="themes/ASD.min.css" />
+    <link rel="stylesheet" href="themes/ASD.min.css" /> 
     <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
     <link href="css/MainCSS.css" rel="stylesheet" type="text/css" />
     <script src="js/libs/modernizr.custom.min.js"></script>
@@ -35,7 +35,7 @@ ASD 1309 Mobile App Project-->
             <ul data-role="listview" data-inset="true">
                 <li><a href="#browseGames">Browse Games</a></li>
                 <li><a href="#previousResults">Previous Results</a></li>
-                <li><a href="#mustWatch">Must Watch Games</a></li>
+                <li><a href="#mustWatchGames">Must Watch Games</a></li>
             </ul>
         </section>
         
@@ -56,14 +56,13 @@ ASD 1309 Mobile App Project-->
             <section class="center-wrapper"><img src="images/watchMUFC.png" width="100px" height="35px"></section>
         </section>
         <section data-role="content">
+            <ul data-role="listview" data-inset="true" id="gameList" data-theme="a" data-filter="true" data-filter-placeholder="Search Games...">
+            </ul>
+            <section>
             <a href="#" data-role="button" id="localStorage" data-theme="a">Load LocalStorage</a>
             <a href="#" data-role="button" id="loadJSON" data-theme="a">Load JSON Data</a>
             <a href="#" data-role="button" id="loadXML" data-theme="a">Load XML Data</a>
-            <ul data-role="listview" data-inset="true" id="gameList" data-filter="true" data-filter-placeholder="Search Games...">
-                <li data-role="list-divider" style="font-size: 12pt; color: #000000">Browse All Games</li>
-                <li>
-                </li>
-            </ul>
+            </section>
         </section>
         
         <section data-role="footer" data-position="fixed" data-id="titlePage">
@@ -123,7 +122,7 @@ ASD 1309 Mobile App Project-->
         </section>
     </section>
     
-    <section data-role="page" id="mustWatch" data-theme="a">
+    <section data-role="page" id="mustWatchGames" data-theme="a">
         
         <section data-role="header">
             <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
@@ -199,6 +198,9 @@ ASD 1309 Mobile App Project-->
                         <label for="prediction">Prediction:</label>
                         <input type="text" name="prediction" id="prediction" placeholder="Example: MUFC win 3-0" class="required"/>  
                     </li>
+                    <li data-role="hidden">
+                        <input id="placeHolder" type="hidden" value=""/>
+                    </li>
                     <li data-role="fieldcontain">
                         <input type="submit" value="Add This Game!" id="submit" data-icon="check" data-iconpos="left"data-theme="c"/>
                     </li>
@@ -208,7 +210,7 @@ ASD 1309 Mobile App Project-->
                 </ul>
                 <div data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
                     <a href="#browseGames" data-role="button" id="editGames" data-theme="a">Edit Games</a>
-                    <a href="#" data-role="button" data-theme="a">Clear All Games</a>
+                    <a href="#" data-role="button" id="clearGames" data-theme="a">Clear All Games</a>
                 </div>
             </form>
         </section>
