@@ -48,6 +48,57 @@ $("#addGame").on("pageinit", function(){
             return false;
         }
     });
+    
+    $("#editGames").on('click', function(){
+        $("#gameList").empty();
+        for (var i= 0, j=localStorage.length; i<j ; i++){
+	    $('#gameEntry').hide();
+            var key = localStorage.key(i);
+            var item = JSON.parse(localStorage.getItem(key));
+            var makeSubList = $("<li></li>");
+            var makeSubLi = $( "<li>" + "<h3>Opponet:  "+item.opponet[1]+"</h3>"+
+                "<p><strong> Date of Game:  "+item.dateOfGame[1]+"</strong></p>"+
+                "<p>Is MUFC Home or Away?  "+item.homeAway[1]+"</p>" +
+                "<p>Competition:  "+item.competition[1]+"</p>" +
+		"<p>Is this a Must Watch Game?  "+item.mustWatch[1]+"</p>" +
+		"<p>Match Prediction:  "+item.prediction[1]+"</p>" +
+		"<a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>" +
+		"<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" + "</li>")
+	    makeSubLi.addClass('newList');
+            makeSubLi.appendTo("#gameList").trigger("create");
+	
+	};
+	    $('.editGame').on('click', function(){
+		$('#gameEntry').show();
+		var editGameEntry = $(this).data('key');
+		var formEntry = $("#gameEntry");
+		$('#key').val(editGameEntry);
+		$('#opponet').val(item.opponet[1]);
+		$('#dateOfGame').val(item.dateOfGame[1]);
+		$('#homeAway').val(item.homeAway[1]);
+		$('#competition').val(item.competition[1]);
+		$('#mustWatch').val(item.mustWatch[1]);
+		$('#prediction').val(item.prediction[1]);
+				
+		formEntry.addClass('newForm');
+		formEntry.appendTo("#gameList");
+		$('#editClear').hide();
+		console.log(editGameEntry);
+		$('#submit').on('click', storeData);
+	    });
+	    
+	    
+	    $(".deleteGame").on('click', function(){
+		alert("Are you sure you want to do that?");
+		localStorage.removeItem(key);
+		alert("Game Deleted");
+		window.location.reload();
+	    });	     
+       
+
+        $("gameList").listview('refresh');
+	
+    });
 
 });    
 
@@ -66,7 +117,7 @@ $("#browseGames").on("pageinit", function(){
                 "<p>Is MUFC Home or Away?  "+item.homeAway+"</p>" +
                 "<p>Competition:  "+item.competition+"</p>" +
 		"<p>Is this a Must Watch Game?  "+item.mustWatch+"</p>" +
-		"<p>Match Prediction:  "+item.prediction+"</p>").appendTo('#gameList').trigger("create");
+		"<p>Match Prediction:  "+item.prediction+"</p>").appendTo('#gameListSample').trigger("create");
 		};
 	    }
 	});
@@ -86,7 +137,7 @@ $("#browseGames").on("pageinit", function(){
 		    "<p>Is MUFC Home or Away?  "+item.find("homeAway").text()+"</p>" +
 		    "<p>Competition:  "+item.find("competition").text()+"</p>" +
 		    "<p>Is this a Must Watch Game?  "+item.find("mustWatch").text()+"</p>" +
-		    "<p>Match Prediction:  "+item.find("prediction").text()+"</p>" + "</li>").appendTo('#gameList').trigger("create");
+		    "<p>Match Prediction:  "+item.find("prediction").text()+"</p>" + "</li>").appendTo('#gameListSample').trigger("create");
 		});
 	    }	
 	});
@@ -120,8 +171,9 @@ $("#browseGames").on("pageinit", function(){
 		$('#mustWatch').val(item.mustWatch[1]);
 		$('#prediction').val(item.prediction[1]);
 				
-		formEntry.addClass('newList');
+		formEntry.addClass('newForm');
 		formEntry.prependTo("#gameList");
+		$('#editClear').hide();
 		console.log(editGameEntry);
 		$('#submit').on('click', storeData);
 	    });
