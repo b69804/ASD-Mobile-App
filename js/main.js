@@ -1,8 +1,28 @@
 // Matthew Ashton
 // ASD 1309 Mobile App Project
 
+var storeData = function(key, value){
+            if ($('#key').val() == '') {
+                   var ID      = Math.floor(Math.random()*10000001);
+                 }else{
+		    var ID = $("#key").val();
+        }
+                var item    = {};
+                item.opponet       =["Opponet", $("#opponet").val()];
+                item.dateOfGame       =["Date of Game", $("#dateOfGame").val()];
+                item.homeAway       =["Home or Away:", $("#homeAway").val()];
+                item.competition          =["Competition:", $("#competition").val()];
+                item.mustWatch          =["Is This a Must Watch Game?:", $("#mustWatch").val()];
+                item.prediction       =["Prediction:", $("#prediction").val()];
+		
+        localStorage.setItem(ID, JSON.stringify(item));
+        alert("Game Saved!");
+	var ID= key;
+	window.location.reload();
+	  
+    };
+
 $("#addGame").on("pageinit", function(){
-    
     var myForm = $('#gameEntry'),
                 gameErrorsLink = $("#gameEntryLink")
                 ;
@@ -29,27 +49,7 @@ $("#addGame").on("pageinit", function(){
         }
     });
 
-var storeData = function(key, value){
-            if ($('#key').val() == '') {
-                   var ID      = Math.floor(Math.random()*10000001);
-                 }else{
-		    var ID = $("#key").val();
-        }
-                var item    = {};
-                item.opponet       =["Opponet", $("#opponet").val()];
-                item.dateOfGame       =["Date of Game", $("#dateOfGame").val()];
-                item.homeAway       =["Home or Away:", $("#homeAway").val()];
-                item.competition          =["Competition:", $("#competition").val()];
-                item.mustWatch          =["Is This a Must Watch Game?:", $("#mustWatch").val()];
-                item.prediction       =["Prediction:", $("#prediction").val()];
-		
-        localStorage.setItem(ID, JSON.stringify(item));
-        alert("Game Saved!");
-	var ID= key;
-	window.location.reload();
-	  
-    };
-});
+});    
 
 $("#browseGames").on("pageinit", function(){
     
@@ -104,33 +104,39 @@ $("#browseGames").on("pageinit", function(){
                 "<p>Competition:  "+item.competition[1]+"</p>" +
 		"<p>Is this a Must Watch Game?  "+item.mustWatch[1]+"</p>" +
 		"<p>Match Prediction:  "+item.prediction[1]+"</p>" +
-		"<a href='#addGame' data-role='button' id='"+ key +"' class='editGame'>Edit Game</a>" +
+		"<a href='#' data-role='button' id='"+ key +"' class='editGame'>Edit Game</a>" +
 		"<a href='#' data-role='button' id='"+ key +"' class='deleteGame'>Delete Game</a>" + "</li>")
 	    makeSubLi.addClass('newList');
             makeSubLi.appendTo("#gameList").trigger("create");
+	};
 	    $('.editGame').on('click', function(){
-		var editGameEntry = this.key;
+		var editGameEntry = key;
+		var formEntry = $("#gameEntry");
 		$('#opponet').val(item.opponet[1]);
 		$('#dateOfGame').val(item.dateOfGame[1]);
 		$('#homeAway').val(item.homeAway[1]);
 		$('#competition').val(item.competition[1]);
 		$('#mustWatch').val(item.mustWatch[1]);
 		$('#prediction').val(item.prediction[1]);
-		
-		
+				
+		formEntry.addClass('newList');
+		formEntry.prependTo("#gameList");
+		$('.submit').on('click', storeData);
 	    });
+	    
+	    
 	    $(".deleteGame").on('click', function(){
 		alert("Are you sure you want to do that?");
 		localStorage.removeItem(key);
 		alert("Game Deleted");
 		window.location.reload();
 	    });	     
-        };
+       
 
         $("gameList").listview('refresh');
 	
-	
     });
+    
     
     
 });
