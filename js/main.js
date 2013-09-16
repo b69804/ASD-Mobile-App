@@ -104,14 +104,15 @@ $("#browseGames").on("pageinit", function(){
                 "<p>Competition:  "+item.competition[1]+"</p>" +
 		"<p>Is this a Must Watch Game?  "+item.mustWatch[1]+"</p>" +
 		"<p>Match Prediction:  "+item.prediction[1]+"</p>" +
-		"<a href='#' data-role='button' id='"+ key +"' class='editGame'>Edit Game</a>" +
-		"<a href='#' data-role='button' id='"+ key +"' class='deleteGame'>Delete Game</a>" + "</li>")
+		"<a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>" +
+		"<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" + "</li>")
 	    makeSubLi.addClass('newList');
             makeSubLi.appendTo("#gameList").trigger("create");
 	};
 	    $('.editGame').on('click', function(){
-		var editGameEntry = key;
+		var editGameEntry = $(this).data('key');
 		var formEntry = $("#gameEntry");
+		$('#key').val(editGameEntry);
 		$('#opponet').val(item.opponet[1]);
 		$('#dateOfGame').val(item.dateOfGame[1]);
 		$('#homeAway').val(item.homeAway[1]);
@@ -121,7 +122,8 @@ $("#browseGames").on("pageinit", function(){
 				
 		formEntry.addClass('newList');
 		formEntry.prependTo("#gameList");
-		$('.submit').on('click', storeData);
+		console.log(editGameEntry);
+		$('#submit').on('click', storeData);
 	    });
 	    
 	    
