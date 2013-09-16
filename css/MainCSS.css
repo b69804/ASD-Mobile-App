@@ -24,6 +24,10 @@ ASD 1309 Mobile App Project */
     background-image:         linear-gradient( #FFFFFF /*{a-bup-background-start}*/, #CC9999 /*{a-bup-background-end}*/);
 }
 
+.newForm{
+    class:"ui-listview ui-listview-inset ui-corner-all ui-shadow";
+}
+
 .newList p {
     margin-top: 10px;
     margin: 3px;
