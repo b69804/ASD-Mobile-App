@@ -56,9 +56,11 @@ ASD 1309 Mobile App Project-->
             <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
         </section>
         <section data-role="content">
-            <section>
             <ul data-role="listview" data-inset="true" id="gameListSample" data-theme="a">
             </ul>
+            <section>
+            <a href="#" data-role="button" id="loadJSON" data-theme="a">Load JSON Data</a>
+            <a href="#" data-role="button" id="loadXML" data-theme="a">Load XML Data</a>
             </section>
         </section>
         

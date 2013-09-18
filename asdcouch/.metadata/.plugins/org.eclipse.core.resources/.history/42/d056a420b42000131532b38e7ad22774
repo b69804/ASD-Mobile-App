@@ -1,0 +1,6 @@
+function (doc) {
+    if (doc._id.substr() ===num) {
+        emit(doc._id);
+        
+    }
+}
