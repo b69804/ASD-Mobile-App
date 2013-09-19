@@ -103,45 +103,67 @@ $("#addGame").on("pageinit", function(){
 });    
 
 $("#browseGames").on("pageinit", function(){
-    
-    $("#loadJSON").on('click', function(){
+            
 	$.ajax({
-	    url: "xhr/data.json",
+	    url: "_view/games",
 	    type: "GET",
 	    dataType: "json",
-	    success: function(response){
-		for (var i= 0, j=response.items.length; i<j ; i++){
-		    var item = response.items[i];
-		    $( "<h3>Opponet:  "+item.opponet+"</h3>"+
-                "<p><strong> Date of Game:  "+item.dateOfGame+"</strong></p>"+
-                "<p>Is MUFC Home or Away?  "+item.homeAway+"</p>" +
-                "<p>Competition:  "+item.competition+"</p>" +
-		"<p>Is this a Must Watch Game?  "+item.mustWatch+"</p>" +
-		"<p>Match Prediction:  "+item.prediction+"</p>").appendTo('#gameListSample').trigger("create");
-		};
+	    success: function(data){
+                   $.each(data.rows, function(index, item){
+                        var opponet = item.value.opponet;
+                        var dateOfGame = item.value.dateOfGame;
+                        var homeAway = item.value.homeAway;
+                        var competition = item.value.competition;
+                        var mustWatch = item.value.mustWatch;
+                        var prediction = item.value.prediction;
+                        $('#gameListSample').append(
+                                $('<li>').append(
+                                    $( "<h3>Opponet:  "+opponet+"</h3>"+
+                                    "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
+                                    "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
+                                    "<p>Competition:  "+competition+"</p>" +
+                                    "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
+                                    "<p>Match Prediction:  "+prediction+"</p>")           
+                        ).addClass('newList')
+            );
+            });
+            $('#gameListSample').listview('refresh');          
 	    }
 	});
-    });
-    
-    $("#loadXML").on('click', function(){
-	$.ajax({
-	    url: "xhr/data.xml",
-	    type: "GET",
-	    dataType: "xml",
-	    success: function(xml){
-		var items = $(xml);
-		items.find("item").each(function(){
-		    var item = $(this);
-		    $( "<li>" + "<h3>Opponet:  "+item.find("opponet").text()+"</h3>"+
-		    "<p><strong> Date of Game:  "+item.find("dateOfGame").text()+"</strong></p>"+
-		    "<p>Is MUFC Home or Away?  "+item.find("homeAway").text()+"</p>" +
-		    "<p>Competition:  "+item.find("competition").text()+"</p>" +
-		    "<p>Is this a Must Watch Game?  "+item.find("mustWatch").text()+"</p>" +
-		    "<p>Match Prediction:  "+item.find("prediction").text()+"</p>" + "</li>").appendTo('#gameListSample').trigger("create");
-		});
-	    }	
-	});
-    });
-    
-    
 });
+
+$("#mustWatchGames").on("pageinit", function(){
+            
+	$.ajax({
+	    url: "_view/mustwatch",
+	    type: "GET",
+	    dataType: "json",
+	    success: function(data){
+                   $.each(data.rows, function(index, item){
+                        var opponet = item.value.opponet;
+                        var dateOfGame = item.value.dateOfGame;
+                        var homeAway = item.value.homeAway;
+                        var competition = item.value.competition;
+                        var mustWatch = item.value.mustWatch;
+                        var prediction = item.value.prediction;
+                        $('#mustWatchList').append(
+                                $('<li>').append(
+                                    $( "<h3>Opponet:  "+opponet+"</h3>"+
+                                    "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
+                                    "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
+                                    "<p>Competition:  "+competition+"</p>" +
+                                    "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
+                                    "<p>Match Prediction:  "+prediction+"</p>")           
+                        ).addClass('newList')
+            );
+            });
+            $('#gameListSample').listview('refresh');          
+	    }
+	});
+});
+
+
+
+
+
+

@@ -2,6 +2,9 @@
   "env": {
     "default": {
       "db": "http://127.0.0.1:5984/asdproject"
+    },
+    "cloudant": {
+    	"db": "https://mashton237:manutd19@mashton237.cloudant.com/trackmufc"
     }
   }
 }

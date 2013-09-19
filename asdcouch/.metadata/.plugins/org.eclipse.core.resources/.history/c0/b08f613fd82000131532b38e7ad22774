@@ -1,0 +1,234 @@
+<!DOCTYPE HTML>
+
+<!-- Matthew Ashton
+ASD 1309 Mobile App Project-->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Watching Sports Made Easy" />
+    <meta name="keywords" content="Sports, lists, favorite sports, loves sports" />
+    <meta name="robots" content="index, follow" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on" />
+    
+    <title>Track MUFC Games Here!</title>
+    
+    <link rel="stylesheet" href="ASD.min.css" /> 
+    <link rel="stylesheet" href="jquery.mobile.structure-1.3.2.min.css" />
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <script src="modernizr.custom.min.js"></script>
+    
+</head>
+<body>
+    <div id="main">
+        
+    <section data-role="page" id="titlePage" data-theme="a">
+        
+        <section data-role="header">
+            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
+        </section>
+        <section data-role="content">
+            <img src="CTA.png" width="100%" height="100%">
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#browseGames">Browse Games</a></li>
+                <li><a href="#previousResults">Previous Results</a></li>
+                <li><a href="#mustWatchGames">Must Watch Games</a></li>
+            </ul>
+        </section>
+        
+        <section data-role="footer" data-position="fixed" data-id="titlePage">
+            <section data-role="navbar" data-iconpos="left">
+                <ul>
+                <li><a href="#titlePage" data-icon="home">Home</a></li>  
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    
+    <section data-role="page" id="browseGames" data-theme="a">
+        
+        <section data-role="header">
+            <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
+            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
+        </section>
+        <section data-role="content">
+            <section>
+            <ul data-role="listview" data-inset="true" id="gameListSample" data-theme="a" data-filter="true" data-filter-placeholder="Search Games...">
+            </ul>
+            </section>
+        </section>
+        
+        <section data-role="footer" data-position="fixed" data-id="titlePage">
+            <section data-role="navbar" data-iconpos="left">
+                <ul>
+                <li><a href="#titlePage" data-icon="home">Home</a></li>  
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    
+    <section data-role="page" id="previousResults" data-theme="a">
+        
+        <section data-role="header">
+            <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
+            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
+        </section>
+        <section data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="a">
+                <li style="font-size: 12pt; color: #000000" data-role="list-divider">Last 5 Games</li>
+                <li>
+                    <h3>Manchester United 2 - 0 Crystal Palace</h3>
+                    <h5 style="font-size: 10pt">Date of Game: 09/14/2013</h5>
+                    <p>Competition: Premier League</p>
+                </li>
+                <li>
+                    <h1>Liverpool 1 - 0 Manchester United</h1>
+                    <h5 style="font-size: 10pt">Date of Game: 09/01/2013</h5>
+                    <p>Competition: Premier League</p>
+                </li>
+                <li>
+                    <h3>Manchester United 0 - 0 Chelsea</h3>
+                    <h5 style="font-size: 10pt">Date of Game: 08/26/2013</h5>
+                    <p>Competition: Premier League</p>
+                </li>
+                <li>
+                    <h3>Swansea City 1 - 4 Manchester United</h3>
+                    <h5 style="font-size: 10pt">Date of Game: 08/17/2013</h5>
+                    <p>Competition: Premier League</p>
+                </li>
+                <li>
+                    <h3>Manchester United 2 - 0 Wigan Atheletic</h3>
+                    <h5 style="font-size: 10pt">Date of Game: 08/17/2013</h5>
+                    <p>Competition: Community Shield</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section data-role="footer" data-position="fixed" data-id="titlePage">
+            <section data-role="navbar" data-iconpos="left">
+                <ul>
+                <li><a href="#titlePage" data-icon="home">Home</a></li>  
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    
+    <section data-role="page" id="mustWatchGames" data-theme="a">
+        
+        <section data-role="header">
+            <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
+            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
+        </section>
+        <section data-role="content">
+            <ul data-role="listview" data-inset="true" id="mustWatchList">
+                <li data-role="list-divider" style="font-size: 12pt; color: #000000">Must Watch Games</li>
+                <li>
+                    <h3>No games added yet!</h3>
+                    <p>Click Add Game to add a game to your list</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section data-role="footer" data-position="fixed" data-id="titlePage">
+            <section data-role="navbar" data-iconpos="left">
+                <ul>
+                <li><a href="#titlePage" data-icon="home">Home</a></li>  
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    
+    <section data-role="page" id="addGame" data-theme="a">
+        
+        <section data-role="header">
+            <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
+            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
+        </section>
+        
+        <section data-role="content">
+            <section>
+            <form type="hidden" action="" method="post" id="editGameEntry"></form>
+            <ul data-role="listview" data-inset="true" id="gameList" data-theme="a">
+            </ul>
+            </section>
+            <form action="" method="post" id="gameEntry" >
+                <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider" style="font-size: 12pt; color: #000000">Add Game Information</li>
+                    <input id="key" type="hidden" value="" />
+                    <li data-role="fieldcontain">
+                        <label for="opponet">Opponet:<label id="required1">  (Required)  </label></label>
+                        <input type="text" name="opponet" id="opponet" placeholder="Example: Arsenal" class="required"/>  
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="dateOfGame">Date of Game:<label id="required2"> (Required)</label></label>
+                        <input type="date" name="dateOfGame" id="dateOfGame" placeholder="MM/DD/YYYY" class="required date"/>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="homeAway">Is MUFC Home or Away<label id="required3"> (Required)</label></label>
+                        <select name="homeAway" id="homeAway" data-role="slider">
+                            <option value="Home">Home</option>
+                            <option value="Away">Away</option>
+                        </select>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="competition" class="select">Select Competition:</label>
+                            <select name="competition" id="competition" data-native-menu="true">
+                                <option value="Premier League">Premier League</option>
+                                <option value="FA Cup">FA Cup</option>
+                                <option value="Champions League">Champions League</option>
+                                <option value="Capital One Cup">Capital One Cup</option>
+                                <option value="Europa League">Europa League</option>
+                                <option value="Friendly">Friendly</option>
+                                <option value="Other">Other</option>
+                        </select>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="mustWatch">Is This a Must Watch Game?<label id="required4"> (Required)</label></label>
+                        <select name="mustWatch" id="mustWatch" data-role="slider">
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <label for="prediction">Prediction:</label>
+                        <input type="text" name="prediction" id="prediction" placeholder="Example: MUFC win 3-0" class="required"/>  
+                    </li>
+                    <li data-role="hidden">
+                        <input id="placeHolder" type="hidden" value=""/>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <input type="submit" value="Add This Game!" id="submit" class="submit" data-icon="check" data-iconpos="left"data-theme="c"/>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <input type="reset" value="Start Over" data-mini="true" data-icon="delete" data-iconpos="left" data-theme="b"/>
+                    </li>
+                </ul>
+                <section data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
+                    <a href="#" data-role="button" id="editGames" data-theme="a">Edit Games</a>
+                    <a href="#" data-role="button" id="clearGames" data-theme="a">Clear All Games</a>
+                </section>
+            </form>
+        </section>
+        <section data-role="footer" data-id="titlePage">
+            <section data-role="navbar" data-iconpos="left">
+                <ul>
+                <li><a href="#titlePage" data-icon="home">Home</a></li>  
+                <li><a href="#addGame" data-icon="plus">Add Game</a></li>
+                </ul>
+            </section>
+        </section>
+    </section>
+    </div>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="jquery.mobile-1.3.2.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <script src="main.js" type="text/javascript"></script>
+</body>
+</html>
