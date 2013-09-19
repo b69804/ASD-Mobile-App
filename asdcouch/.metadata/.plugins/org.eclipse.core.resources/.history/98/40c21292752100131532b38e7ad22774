@@ -4,7 +4,7 @@
       "db": "http://127.0.0.1:5984/asdproject"
     },
     "cloudant": {
-    	"db": "https://mispessedgetristintlying:Ry0p8FswteIgKDj1Gvj33Rj0@mashton237.cloudant.com/trackmufc"
+    	"db": "https://mashton237:manutd19@mashton237.cloudant.com/trackmufc"
     }
   }
 }
