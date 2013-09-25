@@ -18,7 +18,7 @@ var storeData = function(key, value){
 		
         //localStorage.setItem(ID, JSON.stringify(item));
         $.couch.db('asdproject').saveDoc(item, function(){
-            success: function(item){
+            success: function(){
                      console.log('Nope');   
             },
             error: function(){
