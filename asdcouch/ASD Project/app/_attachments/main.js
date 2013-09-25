@@ -7,7 +7,8 @@ var storeData = function(key, value){
                  }else{
 		    var ID = $("#key").val();
         }
-                var item    = {};
+        var ID= key;
+                var item = {};
                 item.opponet       =["Opponet", $("#opponet").val()];
                 item.dateOfGame       =["Date of Game", $("#dateOfGame").val()];
                 item.homeAway       =["Home or Away:", $("#homeAway").val()];
@@ -15,14 +16,23 @@ var storeData = function(key, value){
                 item.mustWatch          =["Is This a Must Watch Game?:", $("#mustWatch").val()];
                 item.prediction       =["Prediction:", $("#prediction").val()];
 		
-        localStorage.setItem(ID, JSON.stringify(item));
+        //localStorage.setItem(ID, JSON.stringify(item));
+        $.couch.db('asdproject').saveDoc(item, function(){
+            success: function(item){
+                     console.log('Nope');   
+            },
+            error: function(){
+                        console.log('Data not stored');
+            }
+            })
         alert("Game Saved!");
-	var ID= key;
+	
 	window.location.reload();
 	  
     };
 
-$("#addGame").on("pageinit", function(){
+$("#addGame").on("pageinit", function(){        
+            
     var myForm = $('#gameEntry'),
                 gameErrorsLink = $("#gameEntryLink")
                 ;
