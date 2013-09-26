@@ -170,8 +170,8 @@ ASD 1309 Mobile App Project-->
                     </li>
                 </ul>
                 <section data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
-                    <a href="#" data-role="button" data-ajax="false" id="editGames" data-theme="a">Edit Games</a>
-                    <a href="#" data-role="button" data-ajax="false" id="clearGames" data-theme="a">Clear All Games</a>
+                    <a href="#" data-role="button" id="editGames" data-theme="a">Edit Games</a>
+                    <a href="#" data-role="button" id="clearGames" data-theme="a">Clear All Games</a>
                 </section>
             </form>
         </section>

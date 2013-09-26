@@ -2,24 +2,27 @@
 // ASD 1309 Mobile App Project
 
 var storeData = function(key, value){
-            if ($('#key').val() == '') {
-                   var ID      = Math.floor(Math.random()*10000001);
-                 }else{
-		    var ID = $("#key").val();
-        }
-        var ID= key;
+            //if ($('#key').val() == '') {
+              //     var ID      = Math.floor(Math.random()*10000001);
+                // }else{
+		  //  var ID = $("#key").val();
+        //}
+        
                 var item = {};
-                item.opponet       =["Opponet", $("#opponet").val()];
-                item.dateOfGame       =["Date of Game", $("#dateOfGame").val()];
-                item.homeAway       =["Home or Away:", $("#homeAway").val()];
-                item.competition          =["Competition:", $("#competition").val()];
-                item.mustWatch          =["Is This a Must Watch Game?:", $("#mustWatch").val()];
-                item.prediction       =["Prediction:", $("#prediction").val()];
+                item._id         =$("#dateOfGame").val()
+                item.opponet       =$("#opponet").val()
+                item.dateOfGame       =$("#dateOfGame").val()
+                item.homeAway       =$("#homeAway").val()
+                item.competition          =$("#competition").val()
+                item.mustWatch          =$("#mustWatch").val()
+                item.prediction       =$("#prediction").val()
+                
 		
         //localStorage.setItem(ID, JSON.stringify(item));
-        $.couch.db('asdproject').saveDoc(item, function(){
+        $.couch.db('asdproject').saveDoc(item, {
             success: function(){
-                     console.log('Nope');   
+                        var key = item._id;
+                     console.log(key);   
             },
             error: function(){
                         console.log('Data not stored');
@@ -60,25 +63,46 @@ $(document).on("pageinit", "#addGameData", function(){
     });
     
     $("#editGames").on('click', function(){
-        $("#gameList").empty();
-        for (var i= 0, j=localStorage.length; i<j ; i++){
-	    $('#gameEntry').hide();
-            var key = localStorage.key(i);
-            var item = JSON.parse(localStorage.getItem(key));
-            var makeSubList = $("<li></li>");
-            var makeSubLi = $( "<li>" + "<h3>Opponet:  "+item.opponet[1]+"</h3>"+
-                "<p><strong> Date of Game:  "+item.dateOfGame[1]+"</strong></p>"+
-                "<p>Is MUFC Home or Away?  "+item.homeAway[1]+"</p>" +
-                "<p>Competition:  "+item.competition[1]+"</p>" +
-		"<p>Is this a Must Watch Game?  "+item.mustWatch[1]+"</p>" +
-		"<p>Match Prediction:  "+item.prediction[1]+"</p>" +
-		"<a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>" +
-		"<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" + "</li>")
+        
+        //for (var i= 0, j=localStorage.length; i<j ; i++){
+	//var key = localStorage.key(i);
+        //var item = JSON.parse(localStorage.getItem(key));    
+            $.couch.db('asdproject').view("trackmufc/games",{
+            success: function(data) {
+                   $("#gameList").empty();
+                   $('#gameEntry').hide();
+            $.each(data.rows, function(index, item){
+                        var key = item.key;
+                        var opponet = item.value.opponet;
+                        var dateOfGame = item.value.dateOfGame;
+                        var homeAway = item.value.homeAway;
+                        var competition = item.value.competition;
+                        var mustWatch = item.value.mustWatch;
+                        var prediction = item.value.prediction;
+                        var makeSubList = $("<li></li>");
+                        var makeSubLi = $( "<li>" + "<h3>Opponet:  "+opponet+"</h3>"+
+                        "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
+                        "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
+                        "<p>Competition:  "+competition+"</p>" +
+                        "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
+                        "<p>Match Prediction:  "+prediction+"</p>" +
+                        "<a href='#' data-role='button' data-key='"+ key +"' id='editGame'>Edit Game</a>" +
+                        "<a href='#' data-role='button' data-key='"+ key +"' id='deleteGame'>Delete Game</a>" + "</li>");
 	    makeSubLi.addClass('newList');
             makeSubLi.appendTo("#gameList").trigger("create");
-	
-	};
-	    $('.editGame').on('click', function(){
+            console.log(key);
+            });
+            },
+            error: function(){
+                        console.log('Data not stored');
+            }
+            
+            });
+	    
+       
+	                
+            $('#editGame').on('click', function(){
+            console.log("Doesnt work");
 		$('#gameEntry').show();
 		var editGameEntry = $(this).data('key');
 		var formEntry = $("#gameEntry");
@@ -95,10 +119,10 @@ $(document).on("pageinit", "#addGameData", function(){
 		$('#editClear').hide();
 		console.log(editGameEntry);
 		$('#submit').on('click', storeData);
-	    });
+	   });
 	    
 	    
-	    $(".deleteGame").on('click', function(){
+	    $("#deleteGame").on('click', function(){
 		alert("Are you sure you want to do that?");
 		localStorage.removeItem(key);
 		alert("Game Deleted");
@@ -110,7 +134,7 @@ $(document).on("pageinit", "#addGameData", function(){
 	
     });
 
-});    
+ });   
 
 $("#browseGames").on("pageinit", function(){
             

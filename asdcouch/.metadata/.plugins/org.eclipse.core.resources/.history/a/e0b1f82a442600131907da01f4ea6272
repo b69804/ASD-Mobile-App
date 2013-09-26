@@ -97,93 +97,12 @@ ASD 1309 Mobile App Project-->
         <section data-role="footer" data-id="titlePage">
             <section data-role="navbar" data-iconpos="left">
                 <ul>
-                <li><a href="index.html" data-ajax="false" data-icon="home">Home</a></li>  
+                <li><a href="index.html" data-icon="home">Home</a></li>  
                 <li><a href="#addGame" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
     </section>
-    
-    <section data-role="page" id="editGameData" data-theme="a">
-        
-        <section data-role="header">
-            <a href="#" data-add-back-btn="true" data-rel="back" data-icon="back">Back</a>
-            <section class="center-wrapper"><img src="watchMUFC.png" width="100px" height="35px"></section>
-        </section>
-        
-        <section data-role="content">
-            <section>
-            <form type="hidden" action="" method="post" id="editGameEntry"></form>
-            <ul data-role="listview" data-inset="true" id="gameList" data-theme="a">
-            </ul>
-            </section>
-            <form action="" method="post" id="gameEntry" >
-                <ul data-role="listview" data-inset="true">
-                    <li data-role="list-divider" style="font-size: 12pt; color: #000000">Add Game Information</li>
-                    <input id="key" type="hidden" value="" />
-                    <li data-role="fieldcontain">
-                        <label for="opponet">Opponet:<label id="required1">  (Required)  </label></label>
-                        <input type="text" name="opponet" id="opponet" placeholder="Example: Arsenal" class="required"/>  
-                    </li>
-                    <li data-role="fieldcontain">
-                        <label for="dateOfGame">Date of Game:<label id="required2"> (Required)</label></label>
-                        <input type="date" name="dateOfGame" id="dateOfGame" placeholder="MM/DD/YYYY" class="required date"/>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <label for="homeAway">Is MUFC Home or Away<label id="required3"> (Required)</label></label>
-                        <select name="homeAway" id="homeAway" data-role="slider">
-                            <option value="Home">Home</option>
-                            <option value="Away">Away</option>
-                        </select>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <label for="competition" class="select">Select Competition:</label>
-                            <select name="competition" id="competition" data-native-menu="true">
-                                <option value="Premier League">Premier League</option>
-                                <option value="FA Cup">FA Cup</option>
-                                <option value="Champions League">Champions League</option>
-                                <option value="Capital One Cup">Capital One Cup</option>
-                                <option value="Europa League">Europa League</option>
-                                <option value="Friendly">Friendly</option>
-                                <option value="Other">Other</option>
-                        </select>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <label for="mustWatch">Is This a Must Watch Game?<label id="required4"> (Required)</label></label>
-                        <select name="mustWatch" id="mustWatch" data-role="slider">
-                            <option value="No">No</option>
-                            <option value="Yes">Yes</option>
-                        </select>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <label for="prediction">Prediction:</label>
-                        <input type="text" name="prediction" id="prediction" placeholder="Example: MUFC win 3-0" class="required"/>  
-                    </li>
-                    <li data-role="hidden">
-                        <input id="placeHolder" type="hidden" value=""/>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <input type="submit" value="Add This Game!" id="submit" class="submit" data-icon="check" data-iconpos="left"data-theme="c"/>
-                    </li>
-                    <li data-role="fieldcontain">
-                        <input type="reset" value="Start Over" data-mini="true" data-icon="delete" data-iconpos="left" data-theme="b"/>
-                    </li>
-                </ul>
-                <section data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
-                    <a href="#" data-role="button" data-ajax="false" id="editGames" data-theme="a">Edit Games</a>
-                    <a href="#" data-role="button" data-ajax="false" id="clearGames" data-theme="a">Clear All Games</a>
-                </section>
-            </form>
-        </section>
-        <section data-role="footer" data-id="titlePage">
-            <section data-role="navbar" data-iconpos="left">
-                <ul>
-                <li><a href="index.html" data-ajax="false" data-icon="home">Home</a></li>  
-                <li><a href="#addGame" data-icon="plus">Add Game</a></li>
-                </ul>
-            </section>
-        </section>
-    </section>    
 	</div>
     <script src="jquery-1.10.2.min.js"></script>
     <script src="jquery.mobile-1.3.2.min.js"></script>
