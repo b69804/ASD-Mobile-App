@@ -31,7 +31,7 @@ var storeData = function(key, value){
 	  
     };
 
-$("#addGame").on("pageinit", function(){        
+$(document).on("pageinit", "#addGameData", function(){        
             
     var myForm = $('#gameEntry'),
                 gameErrorsLink = $("#gameEntryLink")

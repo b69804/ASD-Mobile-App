@@ -42,7 +42,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="#titlePage" data-icon="home">Home</a></li>  
-                <li><a href="addGame.html" data-ajax="false" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
@@ -65,7 +65,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="#titlePage" data-icon="home">Home</a></li>  
-                <li><a href="addGame.html" data-ajax="false" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
@@ -112,7 +112,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="#titlePage" data-icon="home">Home</a></li>  
-                <li><a href="addGame.html" data-ajax="false" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
@@ -133,7 +133,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="#titlePage" data-icon="home">Home</a></li>  
-                <li><a href="addGame.html" data-ajax="false" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-ajax="false" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
