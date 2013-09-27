@@ -88,6 +88,9 @@ ASD 1309 Mobile App Project-->
                     <li data-role="fieldcontain">
                         <input type="reset" value="Start Over" data-mini="true" data-icon="delete" data-iconpos="left" data-theme="b"/>
                     </li>
+                    <li data-role="hidden">
+                    <input type="button" id="editSaveButton" data-icon="check" data-iconpos="left"data-theme="c"/>
+                    </li>
                 </ul>
                 <section data-role="controlgroup" data-type="horizontal" data-mini="true" id="editClear">
                     <a href="#" data-role="button" id="editGames" data-theme="a">Edit Games</a>
@@ -99,7 +102,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="index.html" data-ajax="false" data-icon="home">Home</a></li>  
-                <li><a href="#" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>

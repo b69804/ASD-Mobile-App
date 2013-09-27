@@ -42,25 +42,15 @@ $(document).on("pageinit", "#addGameData", function(){
 		myForm.validate({
 		    invalidHandler: function(form, validator){
                 },
-            
-                submitHandler: function() {
+      });      
+       $("#submit").on('click',          
+                function() {
                         var data = myForm.serializeArray();
 			storeData(data);
 			window.location.reload();
-			
                 }
-    });
+       );
 
-    $("#clearGames").on('click', function(){
-        if(localStorage.length === 0) {
-            alert("No Games are Available.");
-        }else{
-            localStorage.clear();
-            alert("Games have been cleared.");
-            window.location.reload();
-            return false;
-        }
-    });
     
     $("#editGames").on('click', function(){
         
@@ -87,7 +77,7 @@ $(document).on("pageinit", "#addGameData", function(){
                         "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
                         "<p>Match Prediction:  "+prediction+"</p>" +
                         "<a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>" +
-                        //"<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" +
+                        "<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" +
                         "</a>" + "</li>");
 	    makeSubLi.addClass('newList');
             makeSubLi.appendTo("#gameList").trigger("create");
@@ -107,7 +97,7 @@ $(document).on("pageinit", "#addGameData", function(){
                 $('#gameList').hide();
 		$('#gameEntry').show();
 		var formEntry = $("#editGameEntry");
-		$('#key').val(data.key);
+		$('#key').val(data._id);
 		$('#opponet').val(data.opponet);
 		$('#dateOfGame').val(data.dateOfGame);
 		$('#homeAway').val(data.homeAway);
@@ -118,13 +108,19 @@ $(document).on("pageinit", "#addGameData", function(){
 		formEntry.addClass('newForm');
 		formEntry.appendTo("#gameList");
 		$('#editClear').hide();
-		$('#submit').on('click', function(){
-                              var id = $(this).data('id');
-                              var rev =  $(this).data('rev');
-                              var key = {};
-                              key._id = id;
-                              key._rev = rev;
-                        $.couch.db('asdproject').saveDoc(key, {
+                console.log(data._id);
+                $('#editSubmit').on('click', function(){
+                        var doc = {
+                              _id: $(this).data('_id'),
+                              _rev:  $(this).data('_rev'),
+                              opponet: $("#opponet").val(),
+                              dateOfGame: $("#dateOfGame").val(),
+                              homeAway: $("#homeAway").val(),
+                              competition: $("#competition").val(),
+                              mustWatch: $("#mustWatch").val(),
+                              prediction: $("#prediction").val(),
+                        };
+                        $.couch.db('asdproject').saveDoc(doc, {
                                     success: function(data) {
                                      console.log(data);
                                     },
@@ -135,15 +131,22 @@ $(document).on("pageinit", "#addGameData", function(){
                         });
             },
             error: function(status) {
-                 console.log(status);
+                 console.log("nope!");
                  } 
                       
             }); 
 	    
 	    
-	    $(".deleteGame").on('click', function(){
+	    $('ul').on('click', 'li .deleteGame', function(){
 		alert("Are you sure you want to do that?");
-		localStorage.removeItem(key);
+		$.couch.db('asdproject').removeDoc($(this).data('key'),{
+                        success: function(data){
+                          console.log(data);          
+                        },
+                        error: function(status) {
+                                    console.log(status);
+                        }
+                });        
 		alert("Game Deleted");
 		window.location.reload();
 	    });	     

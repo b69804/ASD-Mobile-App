@@ -99,7 +99,7 @@ ASD 1309 Mobile App Project-->
             <section data-role="navbar" data-iconpos="left">
                 <ul>
                 <li><a href="index.html" data-ajax="false" data-icon="home">Home</a></li>  
-                <li><a href="#" data-icon="plus">Add Game</a></li>
+                <li><a href="#addGame" data-icon="plus">Add Game</a></li>
                 </ul>
             </section>
         </section>
