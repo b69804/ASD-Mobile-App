@@ -162,7 +162,7 @@ $(document).on("pageinit", "#browseGames", function(){
             
 	$.couch.db('asdproject').view("trackmufc/games",{
             success: function(data) {
-                   //$("#gameList").empty();
+                   //$("#listGames").empty();
                    //$('#gameEntry').hide();
             $.each(data.rows, function(index, item){
                         var key = item.key;
@@ -181,7 +181,7 @@ $(document).on("pageinit", "#browseGames", function(){
                         "<p>Match Prediction:  "+prediction+"</p>" +
                         "</li>");
 	    makeSubLi.addClass('newList');
-            makeSubLi.appendTo("#gameList");
+            makeSubLi.appendTo("#listGames").trigger("create");
             console.log(key);
             });
             },
@@ -192,7 +192,7 @@ $(document).on("pageinit", "#browseGames", function(){
             });     
        
 
-        //$("gameList").listview('refresh');
+        $("listGames").listview('refresh');
 	
 });
        
@@ -226,7 +226,7 @@ $("#mustWatchGames").on("pageinit", function(){
                         ).addClass('newList')
             );
             });
-            //$('#gameListSample').listview('refresh');          
+            $('#gameListSample').listview('refresh');          
 	    }
 	});
 });

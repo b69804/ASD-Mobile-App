@@ -1,6 +1,0 @@
-function (doc) {
-    if (doc._id.value ==num) {
-        emit(doc._id);
-        
-    }
-}
