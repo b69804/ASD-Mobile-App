@@ -80,14 +80,15 @@ $(document).on("pageinit", "#addGameData", function(){
                         var mustWatch = item.value.mustWatch;
                         var prediction = item.value.prediction;
                         var makeSubList = $("<li></li>");
-                        var makeSubLi = $( "<li>" + "<h3>Opponet:  "+opponet+"</h3>"+
+                        var makeSubLi = $( "<li>" +  "<h3>Opponet:  "+opponet+"</h3>"+
                         "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
                         "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
                         "<p>Competition:  "+competition+"</p>" +
                         "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
                         "<p>Match Prediction:  "+prediction+"</p>" +
-                        "<a href='#' data-role='button' data-key='"+ key +"' id='editGame'>Edit Game</a>" +
-                        "<a href='#' data-role='button' data-key='"+ key +"' id='deleteGame'>Delete Game</a>" + "</li>");
+                        "<a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>" +
+                        //"<a href='#' data-role='button' data-key='"+ key +"' class='deleteGame'>Delete Game</a>" +
+                        "</a>" + "</li>");
 	    makeSubLi.addClass('newList');
             makeSubLi.appendTo("#gameList").trigger("create");
             console.log(key);
@@ -99,30 +100,48 @@ $(document).on("pageinit", "#addGameData", function(){
             
             });
 	    
-       
-	                
-            $('#editGame').on('click', function(){
-            console.log("Doesnt work");
+            $('ul').on('click', 'li .editGame', function(){
+                $.couch.db('asdproject').openDoc($(this).data('key'), {        
+                      success: function(data){
+                          
+                $('#gameList').hide();
 		$('#gameEntry').show();
-		var editGameEntry = $(this).data('key');
-		var formEntry = $("#gameEntry");
-		$('#key').val(editGameEntry);
-		$('#opponet').val(item.opponet[1]);
-		$('#dateOfGame').val(item.dateOfGame[1]);
-		$('#homeAway').val(item.homeAway[1]);
-		$('#competition').val(item.competition[1]);
-		$('#mustWatch').val(item.mustWatch[1]);
-		$('#prediction').val(item.prediction[1]);
+		var formEntry = $("#editGameEntry");
+		$('#key').val(data.key);
+		$('#opponet').val(data.opponet);
+		$('#dateOfGame').val(data.dateOfGame);
+		$('#homeAway').val(data.homeAway);
+		$('#competition').val(data.competition);
+		$('#mustWatch').val(data.mustWatch);
+		$('#prediction').val(data.prediction);
 				
 		formEntry.addClass('newForm');
 		formEntry.appendTo("#gameList");
 		$('#editClear').hide();
-		console.log(editGameEntry);
-		$('#submit').on('click', storeData);
-	   });
+		$('#submit').on('click', function(){
+                              var id = $(this).data('id');
+                              var rev =  $(this).data('rev');
+                              var key = {};
+                              key._id = id;
+                              key._rev = rev;
+                        $.couch.db('asdproject').saveDoc(key, {
+                                    success: function(data) {
+                                     console.log(data);
+                                    },
+                                    error: function(status) {
+                                    console.log(status);
+                                    }
+                        });
+                        });
+            },
+            error: function(status) {
+                 console.log(status);
+                 } 
+                      
+            }); 
 	    
 	    
-	    $("#deleteGame").on('click', function(){
+	    $(".deleteGame").on('click', function(){
 		alert("Are you sure you want to do that?");
 		localStorage.removeItem(key);
 		alert("Game Deleted");
@@ -133,38 +152,51 @@ $(document).on("pageinit", "#addGameData", function(){
         $("gameList").listview('refresh');
 	
     });
+      
+});   
 
- });   
-
-$("#browseGames").on("pageinit", function(){
+$(document).on("pageinit", "#browseGames", function(){
             
-	$.ajax({
-	    url: "_view/games",
-	    type: "GET",
-	    dataType: "json",
-	    success: function(data){
-                   $.each(data.rows, function(index, item){
+	$.couch.db('asdproject').view("trackmufc/games",{
+            success: function(data) {
+                   //$("#gameList").empty();
+                   //$('#gameEntry').hide();
+            $.each(data.rows, function(index, item){
+                        var key = item.key;
                         var opponet = item.value.opponet;
                         var dateOfGame = item.value.dateOfGame;
                         var homeAway = item.value.homeAway;
                         var competition = item.value.competition;
                         var mustWatch = item.value.mustWatch;
                         var prediction = item.value.prediction;
-                        $('#gameListSample').append(
-                                $('<li>').append(
-                                    $( "<h3>Opponet:  "+opponet+"</h3>"+
-                                    "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
-                                    "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
-                                    "<p>Competition:  "+competition+"</p>" +
-                                    "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
-                                    "<p>Match Prediction:  "+prediction+"</p>")           
-                        ).addClass('newList')
-            );
+                        var makeSubList = $("<li></li>");
+                        var makeSubLi = $( "<li>" + "<h3>Opponet:  "+opponet+"</h3>"+
+                        "<p><strong> Date of Game:  "+dateOfGame+"</strong></p>"+
+                        "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
+                        "<p>Competition:  "+competition+"</p>" +
+                        "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
+                        "<p>Match Prediction:  "+prediction+"</p>" +
+                        "</li>");
+	    makeSubLi.addClass('newList');
+            makeSubLi.appendTo("#gameList");
+            console.log(key);
             });
-            $('#gameListSample').listview('refresh');          
-	    }
-	});
+            },
+            error: function(){
+                        console.log('Data not stored');
+            }
+            
+            });     
+       
+
+        //$("gameList").listview('refresh');
+	
 });
+       
+       
+        
+        
+
 
 $("#mustWatchGames").on("pageinit", function(){
             
@@ -187,11 +219,11 @@ $("#mustWatchGames").on("pageinit", function(){
                                     "<p>Is MUFC Home or Away?  "+homeAway+"</p>" +
                                     "<p>Competition:  "+competition+"</p>" +
                                     "<p>Is this a Must Watch Game?  "+mustWatch+"</p>" +
-                                    "<p>Match Prediction:  "+prediction+"</p>")           
+                                    "<p>Match Prediction:  "+prediction+"</p>" + "<a href='#' data-role='button' 'class='editGame'>Edit Game</a>")           
                         ).addClass('newList')
             );
             });
-            $('#gameListSample').listview('refresh');          
+            //$('#gameListSample').listview('refresh');          
 	    }
 	});
 });
@@ -201,3 +233,4 @@ $("#mustWatchGames").on("pageinit", function(){
 
 
 
+});

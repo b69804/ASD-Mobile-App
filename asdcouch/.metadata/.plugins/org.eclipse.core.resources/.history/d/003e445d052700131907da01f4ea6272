@@ -58,6 +58,7 @@ ASD 1309 Mobile App Project-->
             <section>
             <form type="hidden" action="" method="post" id="editGameEntry"></form>
             <ul data-role="listview" data-inset="true" id="gameList" data-theme="a">
+            <a href='#' data-role='button' data-key='"+ key +"' class='editGame'>Edit Game</a>
             </ul>
             
             </section>

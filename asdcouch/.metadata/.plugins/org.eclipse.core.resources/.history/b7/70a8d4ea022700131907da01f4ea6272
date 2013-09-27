@@ -56,10 +56,8 @@ ASD 1309 Mobile App Project-->
         </section>
         <section data-role="content">
             <section>
-            <form type="hidden" action="" method="post" id="editGameEntry"></form>
-            <ul data-role="listview" data-inset="true" id="gameList" data-theme="a">
+            <ul data-role="listview" data-inset="true" id="gameListSample" data-theme="a" data-filter="true" data-filter-placeholder="Search Games...">
             </ul>
-            
             </section>
         </section>
         

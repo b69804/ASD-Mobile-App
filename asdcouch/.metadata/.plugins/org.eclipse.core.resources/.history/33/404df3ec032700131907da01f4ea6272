@@ -59,7 +59,6 @@ ASD 1309 Mobile App Project-->
             <form type="hidden" action="" method="post" id="editGameEntry"></form>
             <ul data-role="listview" data-inset="true" id="gameList" data-theme="a">
             </ul>
-            
             </section>
         </section>
         
